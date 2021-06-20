@@ -1,5 +1,6 @@
 # HỆ THỐNG CAMERA GIÁM SÁT THÔNG MINH PHỤC VỤ CHĂM SÓC SỨC KHỎE TẠI NHÀ 
 Đề tài này là hệ thống nhận dạng hành động thông qua video thời gian thực, phục vụ giám sát cảnh báo khi xảy ra các hành động nguy hiểm gây ảnh hưởng đến sức khỏe. Tôi sử dụng dataset KARD và thêm vào 1 số hành động nguy hiểm tự thu thập để huấn luyện mô hình nhận dạng.
+![alt text](https://https://github.com/thaitruongan/camera-surveillance-ai/blob/master/media/output.gif "demo")
 ## Các thư viện yêu cầu
 *	Keras
 *	Tensorflow
@@ -10,6 +11,7 @@
 Tải xuống dataset từ đường dẫn này
 https://data.mendeley.com/datasets/k28dtm7tr6/1
 Skeleton joints và Depth data không được sử dụng trong bài này. Chỉ sử dụng phần video RGB. Để chuẩn bị dataset để huấn luyện, cần tạo cấu trúc folder chưa các video như bên dưới.
+```
 Dataset
 ├── a01                   
 │   ├── a01_s01_e01.mp4             
@@ -29,8 +31,8 @@ Dataset
 │   ├── ...           
 │   ├── a18_s10_e03   
 └── ...
-
-# Có thể xem thêm chi tiết trong thư mục dataset_list/trainlist.txt và dataset_list/testlist.txt
+```
+Có thể xem thêm chi tiết trong thư mục dataset_list/trainlist.txt và dataset_list/testlist.txt
 
 
 
@@ -93,8 +95,8 @@ Input: 8 khung hình RGB
 
 Output: lớp hành động
 
-*Đề tài chỉ sử dụng duy nhất một mô hình đơn giản để giải quyết bài toán. Tôi chỉ sử dụng LSTM là phần cốt lõi của mô hình và sử dụng mạng MobileNetV2 để rút trích đặc trưng, lấy ý tưởng từ bài báo [paper](https://arxiv.org/abs/1705.02953) và [project](https://github.com/AhmedGamal1496/online-action-recognition#Introduction). Có thể xem thêm kiến trúc mô hình trong file model_ML.py
-*Khi thử nghiệm và đánh giá, tôi sẽ lấy ngẫu nhiên n_sequence khung hình từ mỗi tệp video. Vì vậy n_sequence khung hình là “1 mẫu”. Trong khi thử nghiệm nếu chúng ta chỉ lấy ngẫu nhiên 1 mẫu trên 1 tệp video là không tốt vì độ chính xác sẽ không ổn định. Vì vậy, chúng ta cần lấy ngẫu nhiên nhiều mẫu hơn cho mỗi tệp. Ví dụ: trong eval_model.py, tôi đặt 'n_mul_test' thành 2. Có nghĩa là tôi sẽ chọn ngẫu nhiên 2 mẫu cho mỗi tệp video. Bạn có thể thay đổi n_mul_test thành bất kỳ giá trị nào. Nếu giá trị cao, độ chính xác sẽ ổn định nhưng cần thêm thời gian thử nghiệm.
+* Đề tài chỉ sử dụng duy nhất một mô hình đơn giản để giải quyết bài toán. Tôi chỉ sử dụng LSTM là phần cốt lõi của mô hình và sử dụng mạng MobileNetV2 để rút trích đặc trưng, lấy ý tưởng từ bài báo [paper](https://arxiv.org/abs/1705.02953) và [project](https://github.com/AhmedGamal1496/online-action-recognition#Introduction). Có thể xem thêm kiến trúc mô hình trong file model_ML.py
+* Khi thử nghiệm và đánh giá, tôi sẽ lấy ngẫu nhiên n_sequence khung hình từ mỗi tệp video. Vì vậy n_sequence khung hình là “1 mẫu”. Trong khi thử nghiệm nếu chúng ta chỉ lấy ngẫu nhiên 1 mẫu trên 1 tệp video là không tốt vì độ chính xác sẽ không ổn định. Vì vậy, chúng ta cần lấy ngẫu nhiên nhiều mẫu hơn cho mỗi tệp. Ví dụ: trong eval_model.py, tôi đặt 'n_mul_test' thành 2. Có nghĩa là tôi sẽ chọn ngẫu nhiên 2 mẫu cho mỗi tệp video. Bạn có thể thay đổi n_mul_test thành bất kỳ giá trị nào. Nếu giá trị cao, độ chính xác sẽ ổn định nhưng cần thêm thời gian thử nghiệm.
 
 ## Ghi chú
 
@@ -104,7 +106,7 @@ Output: lớp hành động
 
 ## Lời cảm ơn
 #### An Giang University(AGU)
-My mentor: Dr.Doan Thanh Nghi
+Giảng viên hướng dẫn: Dr. Doan Thanh Nghi
 
 ## Tham Khảo
 ### Example code
