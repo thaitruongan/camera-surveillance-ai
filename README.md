@@ -1,6 +1,6 @@
 # HỆ THỐNG CAMERA GIÁM SÁT THÔNG MINH PHỤC VỤ CHĂM SÓC SỨC KHỎE TẠI NHÀ 
 Đề tài này là hệ thống nhận dạng hành động thông qua video thời gian thực, phục vụ giám sát cảnh báo khi xảy ra các hành động nguy hiểm gây ảnh hưởng đến sức khỏe. Tôi sử dụng dataset KARD và thêm vào 1 số hành động nguy hiểm tự thu thập để huấn luyện mô hình nhận dạng.
-![alt text](https://https://github.com/thaitruongan/camera-surveillance-ai/media/output.gif "demo")
+![alt text](https://github.com/thaitruongan/camera-surveillance-ai/blob/main/media/output.gif "demo")
 ## Các thư viện yêu cầu
 *	Keras
 *	Tensorflow
